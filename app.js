@@ -135,6 +135,7 @@ function lockPiece() {
     level = Math.floor(lines / 10) + 1;
   }
   spawnPiece();
+  lastDrop = performance.now();
 }
 
 function move(dx) {
@@ -145,12 +146,15 @@ function move(dx) {
 
 function softDrop() {
   if (!running || paused) return;
+  let locked = false;
   if (!collides(board, current, 0, 1)) {
     current.y += 1;
   } else {
     lockPiece();
+    locked = true;
   }
   render();
+  return locked;
 }
 
 function hardDrop() {
@@ -198,8 +202,7 @@ function togglePause() {
 function tick(timestamp) {
   if (!running) return;
   if (!paused && timestamp - lastDrop >= dropDelay()) {
-    softDrop();
-    lastDrop = timestamp;
+    if (!softDrop()) lastDrop = timestamp;
   }
   animationFrame = requestAnimationFrame(tick);
 }
