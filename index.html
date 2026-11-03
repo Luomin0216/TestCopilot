@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="一款可直接在浏览器中游玩的俄罗斯方块游戏。" />
+    <title>方块空间 - 俄罗斯方块</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="hero">
+        <p class="eyebrow">BLOCK SPACE</p>
+        <h1>方块空间</h1>
+        <p>经典俄罗斯方块，随时开局。</p>
+      </header>
+
+      <section class="game-layout" aria-label="俄罗斯方块游戏">
+        <div class="board-wrap">
+          <canvas id="board" width="300" height="600" aria-label="游戏棋盘"></canvas>
+          <div id="overlay" class="overlay" aria-live="polite">
+            <h2 id="overlay-title">准备开始？</h2>
+            <p id="overlay-message">用键盘或下方按钮操控方块。</p>
+            <button id="start-button" type="button">开始游戏</button>
+          </div>
+        </div>
+
+        <aside class="sidebar">
+          <section class="panel score-panel" aria-label="游戏信息">
+            <div><span>得分</span><strong id="score">0</strong></div>
+            <div><span>等级</span><strong id="level">1</strong></div>
+            <div><span>消行</span><strong id="lines">0</strong></div>
+          </section>
+
+          <section class="panel next-panel" aria-label="下一个方块">
+            <h2>下一个</h2>
+            <canvas id="next-piece" width="120" height="120" aria-label="下一个方块预览"></canvas>
+          </section>
+
+          <button id="restart-button" class="restart-button" type="button">重新开始</button>
+
+          <section class="panel controls">
+            <h2>操作说明</h2>
+            <dl>
+              <div><dt>← / →</dt><dd>左右移动</dd></div>
+              <div><dt>↑</dt><dd>旋转方块</dd></div>
+              <div><dt>↓</dt><dd>加速下落</dd></div>
+              <div><dt>空格</dt><dd>直接落下</dd></div>
+              <div><dt>P</dt><dd>暂停 / 继续</dd></div>
+            </dl>
+          </section>
+        </aside>
+      </section>
+
+      <section class="touch-controls" aria-label="触控操作">
+        <button type="button" data-action="rotate" aria-label="旋转">↻</button>
+        <button type="button" data-action="left" aria-label="向左移动">←</button>
+        <button type="button" data-action="down" aria-label="向下移动">↓</button>
+        <button type="button" data-action="right" aria-label="向右移动">→</button>
+        <button type="button" data-action="drop" aria-label="直接落下">⇩</button>
+      </section>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
