@@ -239,6 +239,9 @@ document.addEventListener("keydown", (event) => {
     ArrowUp: "rotate",
     " ": "drop"
   };
+  if (event.key === " " && document.activeElement instanceof HTMLButtonElement) {
+    return;
+  }
   if (event.key.toLowerCase() === "p") {
     event.preventDefault();
     togglePause();
