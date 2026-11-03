@@ -63,9 +63,9 @@ function drawCell(context, x, y, color, size) {
 
 function drawBoard() {
   boardContext.clearRect(0, 0, boardCanvas.width, boardCanvas.height);
-  boardContext.fillStyle = "#0a1835";
+  boardContext.fillStyle = "#0b1430";
   boardContext.fillRect(0, 0, boardCanvas.width, boardCanvas.height);
-  boardContext.strokeStyle = "rgba(164, 196, 255, .09)";
+  boardContext.strokeStyle = "rgba(174, 197, 255, .14)";
   for (let x = 0; x <= COLS; x += 1) {
     boardContext.beginPath();
     boardContext.moveTo(x * CELL, 0);

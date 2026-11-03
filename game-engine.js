@@ -2,13 +2,13 @@ export const ROWS = 20;
 export const COLS = 10;
 
 export const PIECES = [
-  { name: "I", color: "#35d6ff", shape: [[1, 1, 1, 1]] },
-  { name: "J", color: "#4b7cff", shape: [[1, 0, 0], [1, 1, 1]] },
-  { name: "L", color: "#ff9f3f", shape: [[0, 0, 1], [1, 1, 1]] },
-  { name: "O", color: "#ffd84d", shape: [[1, 1], [1, 1]] },
-  { name: "S", color: "#57dd7a", shape: [[0, 1, 1], [1, 1, 0]] },
-  { name: "T", color: "#c871ff", shape: [[0, 1, 0], [1, 1, 1]] },
-  { name: "Z", color: "#ff5d70", shape: [[1, 1, 0], [0, 1, 1]] }
+  { name: "I", color: "#4de3ff", shape: [[1, 1, 1, 1]] },
+  { name: "J", color: "#7192ff", shape: [[1, 0, 0], [1, 1, 1]] },
+  { name: "L", color: "#ffae5d", shape: [[0, 0, 1], [1, 1, 1]] },
+  { name: "O", color: "#ffe066", shape: [[1, 1], [1, 1]] },
+  { name: "S", color: "#64e6a3", shape: [[0, 1, 1], [1, 1, 0]] },
+  { name: "T", color: "#c78cff", shape: [[0, 1, 0], [1, 1, 1]] },
+  { name: "Z", color: "#ff7189", shape: [[1, 1, 0], [0, 1, 1]] }
 ];
 
 export function createBoard() {
