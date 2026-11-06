@@ -111,10 +111,12 @@ function showOverlay(title, message, buttonText) {
   overlayTitle.textContent = title;
   overlayMessage.textContent = message;
   startButton.textContent = buttonText;
+  overlay.setAttribute("aria-hidden", "false");
   overlay.classList.remove("hidden");
 }
 
 function hideOverlay() {
+  overlay.setAttribute("aria-hidden", "true");
   overlay.classList.add("hidden");
 }
 
@@ -229,6 +231,7 @@ function handleAction(action) {
   if (action === "down") softDrop();
   if (action === "rotate") rotate();
   if (action === "drop") hardDrop();
+  if (action === "pause") togglePause();
 }
 
 document.addEventListener("keydown", (event) => {
@@ -244,12 +247,13 @@ document.addEventListener("keydown", (event) => {
   }
   if (event.key.toLowerCase() === "p") {
     event.preventDefault();
-    togglePause();
+    if (!event.repeat) togglePause();
     return;
   }
   const action = actionByKey[event.key];
   if (action) {
     event.preventDefault();
+    if (event.repeat && action === "drop") return;
     handleAction(action);
   }
 });
