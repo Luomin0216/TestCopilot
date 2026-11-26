@@ -52,13 +52,35 @@ function updateStats() {
 }
 
 function drawCell(context, x, y, color, size) {
+  const left = x * size;
+  const top = y * size;
+  const inset = Math.max(2, Math.round(size * 0.08));
+  const right = left + size;
+  const bottom = top + size;
+
   context.fillStyle = color;
-  context.fillRect(x * size, y * size, size, size);
-  context.fillStyle = "rgba(255,255,255,.2)";
-  context.fillRect(x * size + 2, y * size + 2, size - 4, 3);
-  context.strokeStyle = "rgba(5, 14, 35, .55)";
+  context.fillRect(left, top, size, size);
+
+  const depth = context.createLinearGradient(left, top, right, bottom);
+  depth.addColorStop(0, "rgba(255,255,255,.18)");
+  depth.addColorStop(0.38, "rgba(255,255,255,0)");
+  depth.addColorStop(1, "rgba(4,10,28,.32)");
+  context.fillStyle = depth;
+  context.fillRect(left, top, size, size);
+
+  context.fillStyle = "rgba(255,255,255,.38)";
+  context.fillRect(left + inset, top + inset, size - inset * 2, Math.max(2, Math.round(size * 0.1)));
+  context.fillRect(left + inset, top + inset, Math.max(2, Math.round(size * 0.1)), size - inset * 2);
+
+  context.fillStyle = "rgba(3,8,24,.24)";
+  context.fillRect(left + inset, bottom - inset - Math.max(2, Math.round(size * 0.1)), size - inset * 2, Math.max(2, Math.round(size * 0.1)));
+  context.fillRect(right - inset - Math.max(2, Math.round(size * 0.1)), top + inset, Math.max(2, Math.round(size * 0.1)), size - inset * 2);
+
+  context.strokeStyle = "rgba(255,255,255,.34)";
   context.lineWidth = 1;
-  context.strokeRect(x * size + 0.5, y * size + 0.5, size - 1, size - 1);
+  context.strokeRect(left + 0.5, top + 0.5, size - 1, size - 1);
+  context.strokeStyle = "rgba(3,8,24,.58)";
+  context.strokeRect(left + inset + 0.5, top + inset + 0.5, size - inset * 2 - 1, size - inset * 2 - 1);
 }
 
 function drawBoard() {
